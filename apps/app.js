@@ -56,9 +56,10 @@ function initMap() {
       }
     });
     map.fitBounds(bounds);
+});	
 
+}
 
-    
 function initService() {
   var displaySuggestions = function(predictions, status) {
     if (status != google.maps.places.PlacesServiceStatus.OK) {
@@ -73,10 +74,12 @@ function initService() {
     });
   };
 
+  var input = document.getElementById('start_point');
   var service = new google.maps.places.AutocompleteService();
-  service.getQueryPredictions({ input: 'pizza near Syd' }, displaySuggestions);
+  service.getQueryPredictions(input, displaySuggestions);
 }
-  });
 
-}
+
+
+
 
