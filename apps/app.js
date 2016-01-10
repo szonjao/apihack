@@ -79,7 +79,4 @@ function initService() {
   service.getQueryPredictions(input, displaySuggestions);
 }
 
-
-
-
-
+                                                      
