@@ -81,3 +81,8 @@ label {
 	height: auto;
 	min-height: 200px;
 }
+
+#details_area {
+	height: auto;
+	min-height: 5em;
+}

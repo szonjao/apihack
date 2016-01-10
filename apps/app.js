@@ -2,6 +2,7 @@
 //Places: AIzaSyB-oHRgiQ7xP9S1Y3VoTtUPLHDQ0EaYI3E
 
 var map;
+
 function initMap() {
 	map = new google.maps.Map(document.getElementById('map_area'), {
     	center: {lat: -34.397, lng: 150.644},
@@ -55,6 +56,30 @@ function initMap() {
       }
     });
     map.fitBounds(bounds);
-  });
+});	
 
 }
+
+function initService() {
+  var displaySuggestions = function(predictions, status) {
+    if (status != google.maps.places.PlacesServiceStatus.OK) {
+      alert(status);
+      return;
+    }
+
+    predictions.forEach(function(prediction) {
+      var li = document.createElement('li');
+      li.appendChild(document.createTextNode(prediction.description));
+      document.getElementById('details_area').appendChild(li);
+    });
+  };
+
+  var input = document.getElementById('start_point');
+  var service = new google.maps.places.AutocompleteService();
+  service.getQueryPredictions(input, displaySuggestions);
+}
+
+
+
+
+

@@ -6,7 +6,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
 		<!-- Google Maps API -->
-		<script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-oHRgiQ7xP9S1Y3VoTtUPLHDQ0EaYI3E&libraries=places&callback=initMap"></script>
+		<script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-oHRgiQ7xP9S1Y3VoTtUPLHDQ0EaYI3E&libraries=places&callback=initMap&callbak=initService"></script>
 
 		<!-- Javascript -->
 		
@@ -24,13 +24,13 @@
 	<body>
 		<header>
 			<h1>TriPlanner</h1>
-			<h2>Design your trip with all the stops</h2>
+			<h2>Decide what places to visit</h2>
 		</header>
 
 		<div id="search_area">
 			
 			<div id="starting">	
-				<p>Starting point: </p>
+				<p>What to see in: </p>
 				<input type="text" id="start_point">
 			</div>
 			
@@ -42,14 +42,15 @@
 			<div id="ending">
 				<p>Final destination:</p>
 				<input type="text" id="end_point">
-			</div>
-		</div> -->
+			</div> -->
+		</div> 
 		
 
 		<div id="map_area">
 		</div>
 		
-		<div id="details_area">
+		<div>
+			<ul id="details_area"></ul>
 		</div>
 		
 	</body>
