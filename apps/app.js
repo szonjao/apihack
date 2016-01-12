@@ -21,48 +21,55 @@ function initMap() {
 
     	if (places.length == 0) {
       		return;
-    }
+    	}
 
-// Clear out the old markers.
-    markers.forEach(function(marker) {
-      marker.setMap(null);
-    });
-    markers = [];
+		// Clear out the old markers.
+    	markers.forEach(function(marker) {
+      		marker.setMap(null);
+    	});
+    	markers = [];
 
-// For each place, get the icon, name and location.
-    var bounds = new google.maps.LatLngBounds();
-    places.forEach(function(place) {
-      var icon = {
-        url: place.icon,
-        size: new google.maps.Size(71, 71),
-        origin: new google.maps.Point(0, 0),
-        anchor: new google.maps.Point(17, 34),
-        scaledSize: new google.maps.Size(25, 25)
-      };
+    	//Clear places.
+    	$()
 
-// Create a marker for each place.
-      markers.push(new google.maps.Marker({
-        map: map,
-        icon: icon,
-        title: place.name,
-        position: place.geometry.location
-      }));
+		// For each place, get the icon, name and location.
+    	var bounds = new google.maps.LatLngBounds();
+    	places.forEach(function(place) {
+      		var icon = {
+        		url: place.icon,
+        		size: new google.maps.Size(71, 71),
+        		origin: new google.maps.Point(0, 0),
+        		anchor: new google.maps.Point(17, 34),
+        		scaledSize: new google.maps.Size(25, 25)
+      		};
 
-      if (place.geometry.viewport) {
-// Only geocodes have viewport.
-        bounds.union(place.geometry.viewport);
-      } else {
-        bounds.extend(place.geometry.location);
-      }
-    });
-    map.fitBounds(bounds);
+			// Create a marker for each place.
+      		markers.push(new google.maps.Marker({
+        		map: map,
+        		icon: icon,
+        		title: place.name,
+        		position: place.geometry.location
+      		}));
 
-});	
+      		if (place.geometry.viewport) {
 
+				// Only geocodes have viewport.
+        		bounds.union(place.geometry.viewport);
+      		} else {
+        		bounds.extend(place.geometry.location);
+      		}
+
+      		//initService(place.name);
+    	});
+    
+    	
+    	map.fitBounds(bounds);
+
+	});	
 }
 
 // List the results in details_area
-function initService() {
+function initService(name) {
   var displaySuggestions = function(predictions, status) {
     if (status != google.maps.places.PlacesServiceStatus.OK) {
       alert(status);
@@ -78,7 +85,7 @@ function initService() {
 
   var service = new google.maps.places.AutocompleteService();
   //service.getQueryPredictions(places, displaySuggestions);
-  service.getQueryPredictions({ input: 'pizza near Syd' }, displaySuggestions);
+  service.getQueryPredictions({input: name}, displaySuggestions);
 }
 
                                                       
